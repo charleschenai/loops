@@ -62,3 +62,6 @@
 [2026-04-23 15:00] upgrade: add --resume flag to continue from crashed/interrupted sessions
   source: no way to pick up where a previous evolve run left off — reads EVOLUTION.log and .evolve-goals
 
+[2026-04-23 15:01] upgrade: persist goals to .evolve-goals file for cross-session continuity
+  source: goals only lived in memory — session crash lost all selected targets
+
