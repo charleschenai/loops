@@ -80,8 +80,6 @@ digraph fixloop {
 
 **Diagnose before fixing.** Read the error. Trace the code. Understand WHY it's broken, not just WHERE. A fix without diagnosis is a guess.
 
-**If a fix fails twice:** Skip it. Move to the next issue. Report it as unresolved at the end.
-
 **If all tests pass:** Stop early. Don't look for problems that aren't there.
 
 ## Each Iteration
