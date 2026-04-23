@@ -225,7 +225,16 @@ If codemap isn't available, use Grep/Glob to scan for unused exports, unreferenc
 **Large codebases (>500 files):** Use the `Agent` tool to dispatch parallel subagents for scanning. Each agent searches a different area (e.g., one for dead code, one for complexity, one for TODO/FIXME markers). Merge their findings in Step 3. This is much faster than sequential scanning on large projects.
 
 ### Step 3: Triage
-Combine test results + codemap findings. Categorize:
+Combine test results + codemap findings. Also scan for security issues:
+```bash
+# Quick security grep (adapt patterns to language)
+grep -rn "password\s*=\s*['\"]" <target> --include="*.{py,js,ts,rb,go}" || true
+grep -rn "TODO.*security\|FIXME.*auth\|HACK.*token" <target> || true
+```
+If codemap supports `taint-analysis`, run it to find unsanitized inputs reaching sensitive sinks.
+
+Categorize findings:
+- **Security:** Hardcoded secrets, injection vectors, unsanitized inputs → Fix mode (highest priority within Fix)
 - **Bugs:** Errors, failures, incorrect output → Fix mode
 - **Waste:** Dead code, unused deps, orphan files, unreachable paths → Clean mode
 - **Gaps:** Missing features, better approaches → Upgrade mode

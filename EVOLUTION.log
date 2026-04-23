@@ -77,3 +77,6 @@
 [2026-04-23 15:03] upgrade: add --focus flag to restrict evolution to a subdirectory
   source: no way to evolve just src/api/ without scanning the entire project
 
+[2026-04-23 15:04] upgrade: add security scanning to triage — hardcoded secrets, injection, taint analysis
+  source: triage only looked for bugs and dead code, not security issues which should be highest fix priority
+
