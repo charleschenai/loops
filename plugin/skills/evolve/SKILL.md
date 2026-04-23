@@ -23,7 +23,7 @@ Autonomously evolve a project toward its final form. Each cycle: test → triage
 ## Usage
 
 ```
-/evolve [count] [target] [--dry-run] [--goals] [--resume] [--focus <subdir>]
+/evolve [count] [target] [--dry-run] [--goals] [--resume] [--focus <subdir>] [--only <mode>]
 ```
 
 - `count` — number of iterations. Omit or `0` for infinite (runs until nothing left or asks human).
@@ -31,7 +31,8 @@ Autonomously evolve a project toward its final form. Each cycle: test → triage
 - `--dry-run` — scan and triage only. Reports what it would do without making any changes.
 - `--goals` — goal-directed mode. Presents a menu of evolution targets, lets you pick, then grinds.
 - `--resume` — continue a previous run. Reads `EVOLUTION.log` and `.evolve-goals` to pick up where left off.
-- `--focus <subdir>` — restrict scanning and changes to a subdirectory (e.g., `src/`, `lib/api/`). Tests and git still use the project root.
+- `--focus <subdir>` — restrict scanning and changes to a subdirectory. Tests and git still use the project root.
+- `--only <fix|clean|upgrade>` — only act on one category. Skip all others. Useful for targeted runs like "just clean dead code" or "just fix bugs."
 
 Examples:
 ```
@@ -52,6 +53,8 @@ Examples:
 | `--dry-run --goals` | Run discovery phase and show the menu, but don't start grinding |
 | `--dry-run --resume` | Show what the next iteration would do based on current state |
 | `--focus --goals` | Discovery phase only scans the focused subdirectory |
+| `--only fix --goals` | Only show fix goals in the discovery menu |
+| `--only clean` | Just clean dead code — skip bugs and upgrades |
 
 ## The Loop
 

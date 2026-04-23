@@ -101,3 +101,6 @@
 [2026-04-23 15:14] clean: replace raw grep commands with Grep tool instructions in security scanning
   source: skill told agent to use grep directly, violating system instructions to use Grep tool
 
+[2026-04-23 15:15] upgrade: add --only flag for category filtering (fix|clean|upgrade)
+  source: no way to restrict evolve to just one mode — sometimes you only want cleanup or only fixes
+
