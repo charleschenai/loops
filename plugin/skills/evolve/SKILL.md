@@ -211,6 +211,14 @@ Run the project's test suite, or exercise it end-to-end. Capture output, errors,
 - **Is a library:** check that it parses/imports without errors
 - **Is config/docs only:** skip to Step 2 — codemap and manual review are the test
 
+**Also run linters (if available)** — linter warnings are fix candidates:
+- **Rust:** `cargo clippy -- -W clippy::all 2>&1`
+- **JS/TS:** `npx eslint . 2>&1` or `bunx eslint . 2>&1`
+- **Python:** `ruff check . 2>&1` or `python -m flake8 . 2>&1`
+- **Go:** `go vet ./... 2>&1`
+
+Linter errors are bugs. Linter warnings are upgrade candidates (style/quality improvements).
+
 ### Step 2: Deep Scan with Codemap
 If `codemap` is available (check with `which codemap`), run a structural analysis to surface issues the test suite won't catch:
 ```bash

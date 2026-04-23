@@ -89,3 +89,6 @@
 [2026-04-23 15:09] upgrade: add dependency upgrade detection to scanning step
   source: never checked for outdated deps — one of the most common real-world upgrade targets
 
+[2026-04-23 15:09] upgrade: add language-aware linting — clippy, eslint, ruff, go vet
+  source: triage had no linter integration — linter warnings are common fix/upgrade candidates
+
