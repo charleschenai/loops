@@ -1,0 +1,3 @@
+[2026-04-23 14:45] fix: reorder Steps 10-11 so EVOLUTION.log is written before commit
+  codemap: N/A (single markdown file)
+  source: manual review — Step 10 committed before Step 11 wrote the log, so log entries were never included in the commit they described

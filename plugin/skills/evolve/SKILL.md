@@ -188,20 +188,19 @@ If blast radius is unexpectedly large (>20% of codebase), complexity spiked, or 
 ### Step 9: Verify
 Run the same test from Step 1. The change should be visible. No regressions.
 
-### Step 10: Commit
-```
-git add -A && git commit -m "<prefix>: <what was done>"
-```
-Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`.
-
-### Step 11: Log
+### Step 10: Log
 Append the change to `EVOLUTION.log` in the target directory (create if it doesn't exist). Format:
 ```
 [YYYY-MM-DD HH:MM] <prefix>: <one-line description>
   codemap: complexity=<before>→<after>, dead_functions=<count>
   source: <what informed this — test output / codemap finding / web research>
 ```
-This file is the project's evolution history. Commit it with the change.
+
+### Step 11: Commit
+```
+git add -A && git commit -m "<prefix>: <what was done>"
+```
+Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`. The commit includes the EVOLUTION.log entry from Step 10.
 
 ### Step 12: Report
 Print one line: `[N/total] <prefix>: <what> — verified on <target>`
