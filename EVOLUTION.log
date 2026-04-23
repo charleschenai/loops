@@ -56,3 +56,6 @@
 [2026-04-23 14:57] upgrade: add claude-mem integration for cross-session learning
   source: evolve could re-solve problems already fixed in prior sessions without checking history
 
+[2026-04-23 14:59] upgrade: update README with all v2.2.0 features, bump version
+  source: README stale after 7 iterations — missing dry-run, goals, context7, claude-mem, parallel scan, scope guard
+

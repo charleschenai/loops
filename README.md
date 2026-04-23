@@ -13,13 +13,15 @@ Restart Claude Code after installing.
 ## Usage
 
 ```
-/evolve [count] [target]
+/evolve [count] [target] [--dry-run] [--goals]
 ```
 
 | Argument | Description |
 |----------|-------------|
 | `count` | Number of iterations. Omit for infinite (runs until nothing left). |
 | `target` | Directory to evolve. Defaults to current working directory. |
+| `--dry-run` | Scan and triage only — shows what it would do without making changes. |
+| `--goals` | Pick evolution targets from a menu, then grind toward them autonomously. |
 
 ### Examples
 
@@ -27,6 +29,8 @@ Restart Claude Code after installing.
 /evolve 10 ~/Desktop/codemap       # 10 evolution cycles on codemap
 /evolve ~/Desktop/my-project        # evolve until final form
 /evolve 5                           # 5 cycles on current directory
+/evolve --dry-run ~/Desktop/my-app  # preview without touching anything
+/evolve --goals ~/Desktop/my-app    # pick goals, then grind
 ```
 
 ## How It Works
@@ -46,7 +50,7 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 1. **Test** — run the project's test suite or exercise it end-to-end
 2. **Deep Scan** — structural analysis with [codemap](https://github.com/charleschenai/codemap) (if available)
 3. **Triage** — categorize findings by priority
-4. **Research** — web search + wiki search (AI/ML projects) for best practices
+4. **Research** — web search, wiki (AI/ML), context7 (frameworks), claude-mem (prior sessions)
 5. **Pick ONE** — single highest-impact item
 6. **Safety Check** — stops and asks if change is risky
 7. **Implement** — focused, minimal change
@@ -64,6 +68,8 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 - **Batch push** — pushes every 20 iterations, not every commit
 - **GitHub release** — creates a release on completion (if `gh` available and 3+ changes)
 - **No test suite?** — adapts to build-only, CLI, library, or config/docs projects
+- **Scope guard** — upgrades must align with the project's existing purpose
+- **Parallel scanning** — dispatches subagents for large codebases (>500 files)
 
 ## Uninstall
 
@@ -77,6 +83,7 @@ All changes applied by `/evolve` on this project are tracked in [EVOLUTION.log](
 
 ### Releases
 
-- **v2.1.0** — Self-evolved: fixed step ordering bug, added batch push/GitHub releases, wiki search for AI/ML, test-suite fallback, updated flow diagram, this README.
+- **v2.2.0** — Self-evolved again: `--dry-run` mode, `--goals` mode (pick targets then grind), context7 framework docs, claude-mem cross-session learning, parallel agent scanning, scope creep guard.
+- **v2.1.0** — Self-evolved: fixed step ordering bug, added batch push/GitHub releases, wiki search for AI/ML, test-suite fallback, updated flow diagram, README.
 - **v2.0.0** — Unified `/evolve` skill (replaced separate `/upgradeloop`, `/fixloop`, `/cleanloop`). Added codemap integration, web research, and EVOLUTION.log tracking.
 - **v1.0.0** — Initial release with `/upgradeloop` and `/fixloop` skills.
