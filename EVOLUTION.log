@@ -92,3 +92,6 @@
 [2026-04-23 15:09] upgrade: add language-aware linting — clippy, eslint, ruff, go vet
   source: triage had no linter integration — linter warnings are common fix/upgrade candidates
 
+[2026-04-23 15:13] upgrade: document flag combination behavior (--goals --resume, --dry-run --goals, etc)
+  source: unclear what happens when flags are combined — users will try these
+

@@ -44,6 +44,15 @@ Examples:
 /evolve --focus src/api ~/Desktop/app # only evolve the API subdirectory
 ```
 
+### Flag Combinations
+
+| Flags | Behavior |
+|-------|----------|
+| `--goals --resume` | Load `.evolve-goals`, skip discovery, continue grinding remaining goals |
+| `--dry-run --goals` | Run discovery phase and show the menu, but don't start grinding |
+| `--dry-run --resume` | Show what the next iteration would do based on current state |
+| `--focus --goals` | Discovery phase only scans the focused subdirectory |
+
 ## The Loop
 
 ```
