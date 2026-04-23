@@ -50,3 +50,6 @@
 [2026-04-23 14:57] upgrade: add parallel agent scanning for large codebases (>500 files)
   source: Agent tool was in allowed-tools but never mentioned in workflow — large projects benefit from parallel scanning
 
+[2026-04-23 14:57] upgrade: add scope creep guard — upgrades must align with project direction
+  source: upgrade mode had no constraint against adding unrelated features to a project
+

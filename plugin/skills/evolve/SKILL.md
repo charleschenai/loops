@@ -142,6 +142,8 @@ When the project is clean and working, add capabilities:
 
 **Pick the HIGHEST IMPACT upgrade.** Not the easiest. Ask: "What single capability would make this most useful that it can't do today?"
 
+**Stay on-mission.** Upgrades must align with the project's existing purpose and direction. Don't add a web UI to a CLI tool. Don't add AI features to a logging library. Look at what the project already does and extend that — don't pivot it. If unsure whether an upgrade fits, skip it.
+
 ## Goal-Directed Mode (`--goals`)
 
 When `--goals` is passed, evolve runs an interactive planning phase before the loop:
