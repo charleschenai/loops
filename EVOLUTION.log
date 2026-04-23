@@ -47,3 +47,6 @@
 [2026-04-23 14:56] upgrade: add --goals mode: pick evolution targets, then grind toward them
   source: user feedback — wants to choose goals from a menu then let evolve run autonomously toward them
 
+[2026-04-23 14:57] upgrade: add parallel agent scanning for large codebases (>500 files)
+  source: Agent tool was in allowed-tools but never mentioned in workflow — large projects benefit from parallel scanning
+

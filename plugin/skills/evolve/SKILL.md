@@ -202,6 +202,8 @@ codemap --dir <target> unreachable          # dead code paths → Clean candidat
 ```
 If codemap isn't available, use Grep/Glob to scan for unused exports, unreferenced files, and TODO/FIXME/HACK markers.
 
+**Large codebases (>500 files):** Use the `Agent` tool to dispatch parallel subagents for scanning. Each agent searches a different area (e.g., one for dead code, one for complexity, one for TODO/FIXME markers). Merge their findings in Step 3. This is much faster than sequential scanning on large projects.
+
 ### Step 3: Triage
 Combine test results + codemap findings. Categorize:
 - **Bugs:** Errors, failures, incorrect output → Fix mode
