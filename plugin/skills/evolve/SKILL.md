@@ -226,6 +226,8 @@ Use `WebFetch` to pull documentation pages, changelogs, or examples that inform 
 
 **Framework docs (context7):** If the target uses a known framework or library (React, Next.js, Express, Django, Tailwind, Prisma, etc.), use the context7 MCP tools (`resolve-library-id` then `query-docs`) to fetch current documentation before upgrading. This prevents suggesting deprecated APIs or outdated patterns. Especially useful for version migrations and API changes.
 
+**Cross-session memory (claude-mem):** If `claude-mem` MCP tools are available, search past sessions (`smart_search` or `search`) for prior work on this project before acting. Avoids re-solving problems that were already fixed in a previous session, and surfaces decisions/context that inform the current change.
+
 ### Step 5: Pick ONE
 Choose the single highest-impact item from the active category. State what you're doing and why in one sentence.
 

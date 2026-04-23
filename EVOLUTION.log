@@ -53,3 +53,6 @@
 [2026-04-23 14:57] upgrade: add scope creep guard — upgrades must align with project direction
   source: upgrade mode had no constraint against adding unrelated features to a project
 
+[2026-04-23 14:57] upgrade: add claude-mem integration for cross-session learning
+  source: evolve could re-solve problems already fixed in prior sessions without checking history
+
