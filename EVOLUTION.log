@@ -32,3 +32,6 @@
 [2026-04-23 14:53] upgrade: merge log+commit into single Bash call, renumber to 11 steps
   source: user feedback — separate Edit for EVOLUTION.log required unnecessary approval
 
+[2026-04-23 14:54] fix: update flow diagram and README to reflect merged log+commit step (11 steps)
+  source: diagram still showed 12 steps after log+commit merge
+

@@ -59,10 +59,9 @@ digraph evolve {
     "8. Codemap validate" -> "9. Verify";
     "9. Verify" -> "Revert + retry (max 2)" [label="broken"];
     "Revert + retry (max 2)" -> "7. Implement";
-    "9. Verify" -> "10. Log" [label="passes"];
-    "10. Log" -> "11. Commit";
-    "11. Commit" -> "12. Report";
-    "12. Report" -> "Push?" [shape=diamond];
+    "9. Verify" -> "10. Log + Commit" [label="passes"];
+    "10. Log + Commit" -> "11. Report";
+    "11. Report" -> "Push?" [shape=diamond];
     "Push?" -> "git push" [label="every 20"];
     "Push?" -> "Counter > 0?" [label="not yet"];
     "git push" -> "Counter > 0?";

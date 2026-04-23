@@ -52,8 +52,8 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 7. **Implement** — focused, minimal change
 8. **Validate** — codemap blast-radius and complexity check
 9. **Verify** — re-run tests, confirm no regressions
-10. **Log** — append to `EVOLUTION.log`
-11. **Commit** — `fix:`, `clean:`, or `upgrade:` prefix
+10. **Log + Commit** — append to `EVOLUTION.log` and commit in one Bash call
+11. **Report** — print progress, push every 20 iterations
 
 ### Safety
 
