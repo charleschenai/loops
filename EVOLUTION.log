@@ -110,3 +110,6 @@
 [2026-04-23 15:18] upgrade: add worktree isolation for medium-risk changes
   source: binary choice (stop or proceed) was too coarse — worktrees let risky changes be tested safely
 
+[2026-04-23 15:25] upgrade: add install.sh --check flag for status verification
+  source: no way to verify installation status without running Claude Code
+

@@ -25,6 +25,38 @@ if [ "${1:-}" = "--uninstall" ]; then
     exit 0
 fi
 
+# Handle --check
+if [ "${1:-}" = "--check" ]; then
+    echo "=== Loops Plugin Status ==="
+    ok=true
+    for f in .claude-plugin/marketplace.json plugin/.claude-plugin/plugin.json plugin/skills/evolve/SKILL.md; do
+        if [ -f "$PLUGIN_DIR/$f" ]; then
+            echo "  [ok] $f"
+        else
+            echo "  [MISSING] $f"
+            ok=false
+        fi
+    done
+    if [ -d "$CACHE_DIR" ]; then
+        echo "  [ok] cache exists at $CACHE_DIR"
+    else
+        echo "  [info] no cache (will be created on next Claude Code start)"
+    fi
+    if [ -f "$SETTINGS" ] && grep -q '"loops@loops"' "$SETTINGS" 2>/dev/null; then
+        echo "  [ok] settings.json has loops@loops"
+    else
+        echo "  [MISSING] loops@loops not in settings.json"
+        ok=false
+    fi
+    if $ok; then
+        version=$(grep '"version"' "$PLUGIN_DIR/plugin/.claude-plugin/plugin.json" 2>/dev/null | head -1 | sed 's/.*"version": *"//;s/".*//')
+        echo "  Status: installed (v${version:-unknown})"
+    else
+        echo "  Status: BROKEN — run installer to fix"
+    fi
+    exit 0
+fi
+
 # 1. Clone or update the repo
 if [ -d "$PLUGIN_DIR/.git" ]; then
     echo "Plugin already cloned at $PLUGIN_DIR, pulling latest..."
