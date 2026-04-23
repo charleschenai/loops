@@ -29,3 +29,6 @@
 [2026-04-23 15:02] upgrade: update README with all new features, bump to v2.1.0
   codemap: N/A (single markdown file)
   source: README was stale after 6 iterations of changes — wiki search, batch push, test fallback all missing
+[2026-04-23 14:53] upgrade: merge log+commit into single Bash call, renumber to 11 steps
+  source: user feedback — separate Edit for EVOLUTION.log required unnecessary approval
+

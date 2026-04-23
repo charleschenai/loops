@@ -200,21 +200,16 @@ If blast radius is unexpectedly large (>20% of codebase), complexity spiked, or 
 ### Step 9: Verify
 Run the same test from Step 1. The change should be visible. No regressions.
 
-### Step 10: Log
-Append the change to `EVOLUTION.log` in the target directory (create if it doesn't exist). Format:
+### Step 10: Log + Commit
+Append to `EVOLUTION.log` and commit in a single Bash command — no separate Edit call needed:
+```bash
+printf '[%s] %s: %s\n  source: %s\n\n' \
+  "$(date '+%Y-%m-%d %H:%M')" "<prefix>" "<description>" "<source>" \
+  >> EVOLUTION.log && git add -A && git commit -m "<prefix>: <description>"
 ```
-[YYYY-MM-DD HH:MM] <prefix>: <one-line description>
-  codemap: complexity=<before>→<after>, dead_functions=<count>
-  source: <what informed this — test output / codemap finding / web research>
-```
+Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`. The `source` field records what informed the change (test output, codemap finding, web research, wiki, etc.).
 
-### Step 11: Commit
-```
-git add -A && git commit -m "<prefix>: <what was done>"
-```
-Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`. The commit includes the EVOLUTION.log entry from Step 10.
-
-### Step 12: Report
+### Step 11: Report
 Print one line: `[N/total] <prefix>: <what> — verified on <target>`
 
 Then loop.
