@@ -98,3 +98,6 @@
 [2026-04-23 15:14] upgrade: add source and iteration to commit message body
   source: git log was one-liners only — commit body now self-documents without needing EVOLUTION.log
 
+[2026-04-23 15:14] clean: replace raw grep commands with Grep tool instructions in security scanning
+  source: skill told agent to use grep directly, violating system instructions to use Grep tool
+
