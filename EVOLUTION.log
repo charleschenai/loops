@@ -13,3 +13,7 @@
 [2026-04-23 14:52] upgrade: add explicit revert instructions for failed changes
   codemap: N/A (single markdown file)
   source: skill said "revert and retry" without specifying how — ambiguous for the agent
+
+[2026-04-23 14:55] upgrade: add wiki search as research source for AI/ML projects
+  codemap: N/A (single markdown file)
+  source: user feedback + wiki pages on self-improving loops — scoped to AI/ML only, not general code

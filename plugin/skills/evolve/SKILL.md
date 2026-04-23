@@ -167,6 +167,8 @@ Use `WebSearch` to research before acting:
 
 Use `WebFetch` to pull documentation pages, changelogs, or examples that inform the implementation.
 
+**Wiki search (AI/ML projects only):** If the target project involves inference, training, retrieval, agents, or ML infrastructure, also search the local wiki via `hybrid_search` MCP tool for relevant techniques, architectures, and prior decisions. The wiki has recent papers, proven patterns, and architectural decisions that post-date training data. Do NOT use wiki for general-purpose code projects — it covers AI/ML topics only.
+
 ### Step 5: Pick ONE
 Choose the single highest-impact item from the active category. State what you're doing and why in one sentence.
 
