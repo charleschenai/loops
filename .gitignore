@@ -1,0 +1,5 @@
+# Evolve runtime files (created in target projects, not here)
+.evolve-goals
+
+# OS
+.DS_Store

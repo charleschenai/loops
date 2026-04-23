@@ -71,3 +71,6 @@
 [2026-04-23 15:02] clean: remove 47 lines — DOT graph and verbose bash examples that LLM doesn't need
   source: 361 lines was too long — DOT doesn't render in Claude Code, bash syntax is known
 
+[2026-04-23 15:03] upgrade: add .gitignore for OS files and evolve runtime artifacts
+  source: repo had no .gitignore
+
