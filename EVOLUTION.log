@@ -104,3 +104,6 @@
 [2026-04-23 15:15] upgrade: add --only flag for category filtering (fix|clean|upgrade)
   source: no way to restrict evolve to just one mode — sometimes you only want cleanup or only fixes
 
+[2026-04-23 15:16] upgrade: add iMessage notification on completion for long unattended runs
+  source: user walks away during long evolve runs — no way to know it finished
+

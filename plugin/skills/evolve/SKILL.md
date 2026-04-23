@@ -356,3 +356,5 @@ Evolution log: <target>/EVOLUTION.log
 ```
 
 Then push remaining commits and create the GitHub release.
+
+**Notification:** If iMessage MCP tools are available and the user has a self-chat configured, send a completion summary via `reply` after the end report. Useful for long unattended runs. Only notify on self-chat — never message other contacts.
