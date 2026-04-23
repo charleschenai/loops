@@ -296,6 +296,8 @@ Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`. The `so
 ### Step 11: Report
 Print one line: `[N/total] <prefix>: <what> — verified on <target>`
 
+Use `TaskCreate` on the first iteration to create a task for the evolve run. Use `TaskUpdate` after each iteration to update progress. This gives the user a visual progress tracker. Mark the task completed when the run ends.
+
 Then loop.
 
 ## Publishing
