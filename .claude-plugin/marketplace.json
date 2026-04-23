@@ -1,16 +1,16 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "loops",
-  "description": "Iterative upgrade, fix, and cleanup loops for autonomous project improvement",
+  "description": "Autonomous project evolution — fixes bugs, removes waste, adds capabilities",
   "owner": {
     "name": "Brandon"
   },
   "plugins": [
     {
       "name": "loops",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "source": "./plugin",
-      "description": "Iterative upgrade and fix loops — autonomously improve or harden a project one step at a time."
+      "description": "Evolve any project toward its final form — autonomously fixes, cleans, and upgrades one step at a time."
     }
   ]
 }
