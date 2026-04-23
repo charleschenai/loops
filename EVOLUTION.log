@@ -107,3 +107,6 @@
 [2026-04-23 15:16] upgrade: add iMessage notification on completion for long unattended runs
   source: user walks away during long evolve runs — no way to know it finished
 
+[2026-04-23 15:18] upgrade: add worktree isolation for medium-risk changes
+  source: binary choice (stop or proceed) was too coarse — worktrees let risky changes be tested safely
+

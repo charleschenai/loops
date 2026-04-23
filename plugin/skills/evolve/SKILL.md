@@ -292,7 +292,10 @@ Choose the single highest-impact item from the active category. State what you'r
 ```
 Then skip to the next iteration (or end if count reached).
 
-**Otherwise:** Ask: "Could this break something the user depends on?" If yes → STOP and ask. If no → proceed.
+**Otherwise:** Ask: "Could this break something the user depends on?"
+- **High risk (could break production, data loss, irreversible):** STOP and ask the human.
+- **Medium risk (might break tests, uncertain scope):** Use a git worktree (`git worktree add`) to test the change in isolation. If it passes verification in the worktree, merge it back. If it fails, discard the worktree — main branch stays clean.
+- **Low risk:** Proceed directly.
 
 ### Step 7: Implement
 Build the fix, removal, or upgrade. Keep it focused — one change, minimal blast radius.
