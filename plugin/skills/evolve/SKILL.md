@@ -23,13 +23,14 @@ Autonomously evolve a project toward its final form. Each cycle: test → triage
 ## Usage
 
 ```
-/evolve [count] [target] [--dry-run] [--goals]
+/evolve [count] [target] [--dry-run] [--goals] [--resume]
 ```
 
 - `count` — number of iterations. Omit or `0` for infinite (runs until nothing left or asks human).
 - `target` — directory to evolve. Defaults to cwd.
 - `--dry-run` — scan and triage only. Reports what it would do without making any changes.
 - `--goals` — goal-directed mode. Scans the project, presents a menu of possible evolution paths, lets you pick which ones to pursue, then grinds autonomously toward those targets.
+- `--resume` — continue a previous evolve run. Reads `EVOLUTION.log` and `.evolve-goals` (if present) to determine what's been done and what goals remain. Picks up where the last session left off.
 
 Examples:
 ```
@@ -38,6 +39,7 @@ Examples:
 /evolve 5                              # 5 cycles on current directory
 /evolve --dry-run ~/Desktop/my-app    # show what needs fixing without touching anything
 /evolve --goals ~/Desktop/my-project  # pick goals, then grind toward them
+/evolve --resume ~/Desktop/my-project # continue where last session left off
 ```
 
 ## The Loop
@@ -181,6 +183,17 @@ Report progress against goals:
 ```
 [3/∞] upgrade: add rate limiting to /api/users — 1 of 3 goals complete
 ```
+
+## Resume Mode (`--resume`)
+
+When `--resume` is passed:
+
+1. Read `EVOLUTION.log` in the target directory. Parse the entries to understand what changes have already been applied.
+2. If `.evolve-goals` exists, load the remaining goals and continue in goal-directed mode.
+3. Count completed iterations from the log and adjust the remaining iteration count accordingly.
+4. Print a summary of prior progress, then continue the loop from the next iteration.
+
+If no `EVOLUTION.log` exists, `--resume` behaves identically to a fresh run.
 
 ## Each Iteration
 
