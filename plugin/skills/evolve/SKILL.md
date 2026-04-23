@@ -95,7 +95,7 @@ Fix first. A project with bugs shouldn't get new features. Clean second. A proje
 - New files are fine — inside the target directory only.
 - The target project's CLI interface and output format are yours to extend (add new actions, flags) but NEVER break existing ones.
 
-**If a change fails twice:** Skip it. Move to the next candidate in the same or next priority category.
+**If a change fails verification:** Revert with `git checkout -- .` to restore the working tree, then retry with a different approach (max 2 attempts). If it fails twice, skip it and move to the next candidate.
 
 **If nothing left in any category:** Stop early and report. The project has reached its final form. Don't invent busywork.
 

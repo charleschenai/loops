@@ -9,3 +9,7 @@
 [2026-04-23 14:50] upgrade: add batch push (every 20 iterations) and GitHub release on completion
   codemap: N/A (single markdown file)
   source: user feedback — pushing every iteration spams GitHub, batch at 20 with release summary
+
+[2026-04-23 14:52] upgrade: add explicit revert instructions for failed changes
+  codemap: N/A (single markdown file)
+  source: skill said "revert and retry" without specifying how — ambiguous for the agent
