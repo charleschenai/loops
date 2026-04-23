@@ -44,37 +44,11 @@ Examples:
 
 ## The Loop
 
-```dot
-digraph evolve {
-    node [shape=box];
-    "1. Test" -> "2. Codemap scan";
-    "2. Codemap scan" -> "3. Triage";
-    "3. Triage" -> "Final form reached" [label="nothing"];
-    "3. Triage" -> "Bugs (fix)" [label="errors"];
-    "3. Triage" -> "Waste (clean)" [label="dead code"];
-    "3. Triage" -> "Gaps (upgrade)" [label="missing"];
-    "Bugs (fix)" -> "4. Research (optional)";
-    "Waste (clean)" -> "5. Pick ONE";
-    "Gaps (upgrade)" -> "4. Research";
-    "4. Research (optional)" -> "5. Pick ONE";
-    "4. Research" -> "5. Pick ONE";
-    "5. Pick ONE" -> "6. Safety check" [shape=diamond];
-    "6. Safety check" -> "STOP — ask human" [label="risky"];
-    "6. Safety check" -> "7. Implement";
-    "7. Implement" -> "8. Codemap validate";
-    "8. Codemap validate" -> "9. Verify";
-    "9. Verify" -> "Revert + retry (max 2)" [label="broken"];
-    "Revert + retry (max 2)" -> "7. Implement";
-    "9. Verify" -> "10. Log + Commit" [label="passes"];
-    "10. Log + Commit" -> "11. Report";
-    "11. Report" -> "Push?" [shape=diamond];
-    "Push?" -> "git push" [label="every 20"];
-    "Push?" -> "Counter > 0?" [label="not yet"];
-    "git push" -> "Counter > 0?";
-    "Counter > 0?" -> "1. Test" [label="yes"];
-    "Counter > 0?" -> "End report + push + release" [label="no"];
-    "Final form reached" -> "End report + push + release";
-}
+```
+Test → Codemap → Triage → Research → Pick ONE → Safety → Implement → Validate → Verify → Log+Commit → Report → (push every 20) → loop or end
+                   ↓ nothing found → final form → end report + push + release
+                   ↓ risky → STOP and ask human
+                   ↓ verify fails → revert + retry (max 2)
 ```
 
 ## Priority Order
@@ -315,30 +289,9 @@ Then loop.
 
 ## Publishing
 
-Evolve commits locally on every iteration but batches pushes to avoid spamming the remote.
-
-**Push every 20 iterations** — after Step 11, if `iteration_count % 20 == 0`, push to the remote:
-```bash
-git push origin HEAD 2>/dev/null || true   # silent no-op if no remote
-```
-
-**Always push on completion** — when the evolve run ends (count reached, final form, or stopped), push all remaining commits.
-
-**GitHub release on completion** — if `gh` is available and the project has a remote, create a release summarizing all changes:
-```bash
-gh release create "v<version>-evolve-<date>" \
-  --title "Evolution: <N> changes applied" \
-  --notes-file <(cat <<NOTES
-## Changes Applied
-
-$(cat EVOLUTION.log | tail -<lines_from_this_run>)
-
----
-*Autonomously evolved by /evolve*
-NOTES
-)
-```
-Skip the release if the target has no GitHub remote or fewer than 3 changes were made.
+- **Push every 20 iterations** — `git push origin HEAD` after Step 11 when `iteration_count % 20 == 0`. Silent no-op if no remote.
+- **Always push on completion** — push all remaining commits when the run ends.
+- **GitHub release on completion** — if `gh` is available, create a release with EVOLUTION.log entries from this run as notes. Title: `"Evolution: <N> changes applied"`. Skip if no remote or fewer than 3 changes.
 
 ## End Report
 
