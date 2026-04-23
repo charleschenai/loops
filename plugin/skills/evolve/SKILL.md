@@ -144,6 +144,12 @@ When the project is clean and working, add capabilities:
 ### Step 1: Test
 Run the project's test suite, or exercise it end-to-end. Capture output, errors, warnings.
 
+**No test suite?** Adapt to what the project has:
+- **Has a build/compile step:** run it — build errors are bugs
+- **Has a CLI:** run it with `--help` or a basic command — crashes are bugs
+- **Is a library:** check that it parses/imports without errors
+- **Is config/docs only:** skip to Step 2 — codemap and manual review are the test
+
 ### Step 2: Deep Scan with Codemap
 If `codemap` is available (check with `which codemap`), run a structural analysis to surface issues the test suite won't catch:
 ```bash
