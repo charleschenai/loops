@@ -41,30 +41,34 @@ Examples:
 ```dot
 digraph evolve {
     node [shape=box];
-    "Run end-to-end test" -> "Triage: what needs attention?";
-    "Triage: what needs attention?" -> "Nothing left — final form reached" [label="clean"];
-    "Triage: what needs attention?" -> "Bugs found" [label="errors"];
-    "Triage: what needs attention?" -> "Waste found" [label="dead code"];
-    "Triage: what needs attention?" -> "Gaps found" [label="missing features"];
-    "Bugs found" -> "Pick the WORST bug";
-    "Waste found" -> "Pick the LARGEST waste";
-    "Gaps found" -> "Research: what should it do?";
-    "Research: what should it do?" -> "Pick ONE highest-impact upgrade";
-    "Pick the WORST bug" -> "Safe to change?" [shape=diamond];
-    "Pick the LARGEST waste" -> "Safe to change?" [shape=diamond];
-    "Pick ONE highest-impact upgrade" -> "Safe to change?" [shape=diamond];
-    "Safe to change?" -> "STOP — ask human" [label="risky"];
-    "Safe to change?" -> "Implement";
-    "Implement" -> "Verify";
-    "Verify" -> "Failed" [label="broken"];
-    "Failed" -> "Revert and retry (max 2)";
-    "Revert and retry (max 2)" -> "Implement";
-    "Verify" -> "Commit" [label="passes"];
-    "Commit" -> "Decrement counter";
-    "Decrement counter" -> "Counter > 0?" [shape=diamond];
-    "Counter > 0?" -> "Run end-to-end test" [label="yes"];
-    "Counter > 0?" -> "Report summary" [label="no"];
-    "Nothing left — final form reached" -> "Report summary";
+    "1. Test" -> "2. Codemap scan";
+    "2. Codemap scan" -> "3. Triage";
+    "3. Triage" -> "Final form reached" [label="nothing"];
+    "3. Triage" -> "Bugs (fix)" [label="errors"];
+    "3. Triage" -> "Waste (clean)" [label="dead code"];
+    "3. Triage" -> "Gaps (upgrade)" [label="missing"];
+    "Bugs (fix)" -> "4. Research (optional)";
+    "Waste (clean)" -> "5. Pick ONE";
+    "Gaps (upgrade)" -> "4. Research";
+    "4. Research (optional)" -> "5. Pick ONE";
+    "4. Research" -> "5. Pick ONE";
+    "5. Pick ONE" -> "6. Safety check" [shape=diamond];
+    "6. Safety check" -> "STOP — ask human" [label="risky"];
+    "6. Safety check" -> "7. Implement";
+    "7. Implement" -> "8. Codemap validate";
+    "8. Codemap validate" -> "9. Verify";
+    "9. Verify" -> "Revert + retry (max 2)" [label="broken"];
+    "Revert + retry (max 2)" -> "7. Implement";
+    "9. Verify" -> "10. Log" [label="passes"];
+    "10. Log" -> "11. Commit";
+    "11. Commit" -> "12. Report";
+    "12. Report" -> "Push?" [shape=diamond];
+    "Push?" -> "git push" [label="every 20"];
+    "Push?" -> "Counter > 0?" [label="not yet"];
+    "git push" -> "Counter > 0?";
+    "Counter > 0?" -> "1. Test" [label="yes"];
+    "Counter > 0?" -> "End report + push + release" [label="no"];
+    "Final form reached" -> "End report + push + release";
 }
 ```
 

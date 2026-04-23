@@ -17,3 +17,7 @@
 [2026-04-23 14:55] upgrade: add wiki search as research source for AI/ML projects
   codemap: N/A (single markdown file)
   source: user feedback + wiki pages on self-improving loops — scoped to AI/ML only, not general code
+
+[2026-04-23 14:58] upgrade: update flow diagram to match full 12-step workflow
+  codemap: N/A (single markdown file)
+  source: diagram was stale — missing codemap scan, research, log, push, and release steps
