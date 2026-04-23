@@ -44,3 +44,6 @@
 [2026-04-23 14:56] upgrade: add context7 integration for framework-aware upgrades
   source: upgrades to framework-using projects could suggest deprecated APIs without current docs
 
+[2026-04-23 14:56] upgrade: add --goals mode: pick evolution targets, then grind toward them
+  source: user feedback — wants to choose goals from a menu then let evolve run autonomously toward them
+

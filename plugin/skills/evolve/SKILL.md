@@ -23,12 +23,13 @@ Autonomously evolve a project toward its final form. Each cycle: test → triage
 ## Usage
 
 ```
-/evolve [count] [target] [--dry-run]
+/evolve [count] [target] [--dry-run] [--goals]
 ```
 
 - `count` — number of iterations. Omit or `0` for infinite (runs until nothing left or asks human).
 - `target` — directory to evolve. Defaults to cwd.
-- `--dry-run` — scan and triage only. Reports what it would do without making any changes. Runs Steps 1-5 of each iteration, then prints the plan and stops.
+- `--dry-run` — scan and triage only. Reports what it would do without making any changes.
+- `--goals` — goal-directed mode. Scans the project, presents a menu of possible evolution paths, lets you pick which ones to pursue, then grinds autonomously toward those targets.
 
 Examples:
 ```
@@ -36,6 +37,7 @@ Examples:
 /evolve ~/Desktop/charlie-code/src    # evolve until final form
 /evolve 5                              # 5 cycles on current directory
 /evolve --dry-run ~/Desktop/my-app    # show what needs fixing without touching anything
+/evolve --goals ~/Desktop/my-project  # pick goals, then grind toward them
 ```
 
 ## The Loop
@@ -139,6 +141,44 @@ When the project is clean and working, add capabilities:
 **Research first.** Use `WebSearch` to find what similar tools/projects do that this one doesn't. Look for best practices, common features, new patterns. Informed upgrades beat blind ones.
 
 **Pick the HIGHEST IMPACT upgrade.** Not the easiest. Ask: "What single capability would make this most useful that it can't do today?"
+
+## Goal-Directed Mode (`--goals`)
+
+When `--goals` is passed, evolve runs an interactive planning phase before the loop:
+
+### Phase 1: Discovery
+Run Steps 1-4 (Test, Codemap, Triage, Research) but collect ALL findings across all categories instead of picking one. Present them as a numbered menu:
+
+```
+=== Evolution Goals ===
+Project: ~/Desktop/my-project
+
+Fixes available:
+  1. [fix] Auth middleware crashes on expired JWT tokens
+  2. [fix] Race condition in WebSocket reconnect
+
+Cleanup available:
+  3. [clean] 12 dead functions in utils/ (codemap)
+  4. [clean] 3 unused dependencies in package.json
+
+Upgrades possible:
+  5. [upgrade] Add rate limiting to API endpoints
+  6. [upgrade] Migrate from CommonJS to ESM
+  7. [upgrade] Add OpenTelemetry tracing
+  8. [upgrade] Connection pooling for database
+
+Pick goals (comma-separated, or 'all'): _
+```
+
+### Phase 2: Grind
+After the user picks goals, evolve works through them in priority order (fixes first, then clean, then upgrades). Each goal may take multiple iterations. The loop continues until all selected goals are complete or the iteration count is reached.
+
+During grind, the triage step only considers items that serve the selected goals — it ignores other findings. If a goal turns out to be infeasible (fails twice), skip it and move to the next selected goal.
+
+Report progress against goals:
+```
+[3/∞] upgrade: add rate limiting to /api/users — 1 of 3 goals complete
+```
 
 ## Each Iteration
 
