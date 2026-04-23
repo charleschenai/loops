@@ -222,6 +222,14 @@ codemap --dir <target> unreachable          # dead code paths → Clean candidat
 ```
 If codemap isn't available, use Grep/Glob to scan for unused exports, unreferenced files, and TODO/FIXME/HACK markers.
 
+**Dependency check:** Also check for outdated dependencies — these are upgrade candidates:
+- **Node:** `npm outdated` or `bun outdated`
+- **Python:** `pip list --outdated` or `uv pip list --outdated`
+- **Rust:** `cargo outdated` (if installed)
+- **Go:** `go list -m -u all`
+
+Major version bumps are risky — flag them for safety check. Minor/patch updates are safe upgrade candidates.
+
 **Large codebases (>500 files):** Use the `Agent` tool to dispatch parallel subagents for scanning. Each agent searches a different area (e.g., one for dead code, one for complexity, one for TODO/FIXME markers). Merge their findings in Step 3. This is much faster than sequential scanning on large projects.
 
 ### Step 3: Triage

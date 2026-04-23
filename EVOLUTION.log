@@ -86,3 +86,6 @@
 [2026-04-23 15:05] upgrade: update README with all v2.3.0 features — resume, focus, security, pre-flight, tasks
   source: README stale after 8 more iterations
 
+[2026-04-23 15:09] upgrade: add dependency upgrade detection to scanning step
+  source: never checked for outdated deps — one of the most common real-world upgrade targets
+
