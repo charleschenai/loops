@@ -194,7 +194,16 @@ git add -A && git commit -m "<prefix>: <what was done>"
 ```
 Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`.
 
-### Step 11: Report
+### Step 11: Log
+Append the change to `EVOLUTION.log` in the target directory (create if it doesn't exist). Format:
+```
+[YYYY-MM-DD HH:MM] <prefix>: <one-line description>
+  codemap: complexity=<before>→<after>, dead_functions=<count>
+  source: <what informed this — test output / codemap finding / web research>
+```
+This file is the project's evolution history. Commit it with the change.
+
+### Step 12: Report
 Print one line: `[N/total] <prefix>: <what> — verified on <target>`
 
 Then loop.
@@ -214,4 +223,5 @@ Changes applied:
 Skipped (failed or risky):
   - <description>
 Stopped because: <final form reached / count reached / asked human>
+Evolution log: <target>/EVOLUTION.log
 ```
