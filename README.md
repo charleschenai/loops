@@ -13,7 +13,7 @@ Restart Claude Code after installing.
 ## Usage
 
 ```
-/evolve [count] [target] [--dry-run] [--goals] [--resume] [--focus <subdir>]
+/evolve [count] [target] [flags]
 ```
 
 | Argument | Description |
@@ -23,7 +23,8 @@ Restart Claude Code after installing.
 | `--dry-run` | Scan and triage only — shows what it would do without making changes. |
 | `--goals` | Pick evolution targets from a menu, then grind toward them autonomously. |
 | `--resume` | Continue a previous run — reads EVOLUTION.log and .evolve-goals. |
-| `--focus` | Restrict scanning and changes to a subdirectory. |
+| `--focus <subdir>` | Restrict scanning and changes to a subdirectory. |
+| `--only <mode>` | Only act on one category: `fix`, `clean`, or `upgrade`. |
 
 ### Examples
 
@@ -76,12 +77,22 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 - **Parallel scanning** — dispatches subagents for large codebases (>500 files)
 - **Security scanning** — catches hardcoded secrets, injection patterns, unsanitized inputs
 - **Pre-flight checks** — refuses dirty working trees, warns on open PRs
+- **Worktree isolation** — medium-risk changes tested in a git worktree before merging
 - **Progress tracking** — visual task tracking via TaskCreate/TaskUpdate
+- **Completion notification** — iMessage self-chat when long runs finish
+- **Linter integration** — clippy, eslint, ruff, go vet
+- **Dependency scanning** — npm/pip/cargo/go outdated checks
 
 ## Uninstall
 
 ```bash
 bash ~/.claude/plugins/marketplaces/loops/install.sh --uninstall
+```
+
+### Check Installation
+
+```bash
+bash ~/.claude/plugins/marketplaces/loops/install.sh --check
 ```
 
 ## Changelog
@@ -90,7 +101,8 @@ All changes applied by `/evolve` on this project are tracked in [EVOLUTION.log](
 
 ### Releases
 
-- **v2.3.0** — Self-evolved (round 3): `--resume`, `--focus`, pre-flight checks, security scanning, task tracking, DOT graph cleanup (-47 lines).
+- **v2.4.0** — Self-evolved (round 4): `--only`, `--check`, dep scanning, linter integration, flag combos, worktree isolation, iMessage notification, rich commits.
+- **v2.3.0** — Self-evolved (round 3): `--resume`, `--focus`, pre-flight checks, security scanning, task tracking, DOT graph cleanup.
 - **v2.2.0** — Self-evolved (round 2): `--dry-run`, `--goals`, context7 docs, claude-mem, parallel scanning, scope guard.
 - **v2.1.0** — Self-evolved: fixed step ordering bug, added batch push/GitHub releases, wiki search for AI/ML, test-suite fallback, updated flow diagram, README.
 - **v2.0.0** — Unified `/evolve` skill (replaced separate `/upgradeloop`, `/fixloop`, `/cleanloop`). Added codemap integration, web research, and EVOLUTION.log tracking.

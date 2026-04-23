@@ -113,3 +113,6 @@
 [2026-04-23 15:25] upgrade: add install.sh --check flag for status verification
   source: no way to verify installation status without running Claude Code
 
+[2026-04-23 15:57] upgrade: final README sync + v2.4.0 — --only, --check, deps, linters, worktrees, notifications
+  source: README stale after 9 more iterations
+
