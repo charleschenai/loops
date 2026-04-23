@@ -23,23 +23,25 @@ Autonomously evolve a project toward its final form. Each cycle: test → triage
 ## Usage
 
 ```
-/evolve [count] [target] [--dry-run] [--goals] [--resume]
+/evolve [count] [target] [--dry-run] [--goals] [--resume] [--focus <subdir>]
 ```
 
 - `count` — number of iterations. Omit or `0` for infinite (runs until nothing left or asks human).
 - `target` — directory to evolve. Defaults to cwd.
 - `--dry-run` — scan and triage only. Reports what it would do without making any changes.
-- `--goals` — goal-directed mode. Scans the project, presents a menu of possible evolution paths, lets you pick which ones to pursue, then grinds autonomously toward those targets.
-- `--resume` — continue a previous evolve run. Reads `EVOLUTION.log` and `.evolve-goals` (if present) to determine what's been done and what goals remain. Picks up where the last session left off.
+- `--goals` — goal-directed mode. Presents a menu of evolution targets, lets you pick, then grinds.
+- `--resume` — continue a previous run. Reads `EVOLUTION.log` and `.evolve-goals` to pick up where left off.
+- `--focus <subdir>` — restrict scanning and changes to a subdirectory (e.g., `src/`, `lib/api/`). Tests and git still use the project root.
 
 Examples:
 ```
 /evolve 10 ~/Desktop/codemap          # 10 evolution cycles on codemap
 /evolve ~/Desktop/charlie-code/src    # evolve until final form
 /evolve 5                              # 5 cycles on current directory
-/evolve --dry-run ~/Desktop/my-app    # show what needs fixing without touching anything
+/evolve --dry-run ~/Desktop/my-app    # preview without touching anything
 /evolve --goals ~/Desktop/my-project  # pick goals, then grind toward them
 /evolve --resume ~/Desktop/my-project # continue where last session left off
+/evolve --focus src/api ~/Desktop/app # only evolve the API subdirectory
 ```
 
 ## The Loop

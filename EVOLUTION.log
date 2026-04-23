@@ -74,3 +74,6 @@
 [2026-04-23 15:03] upgrade: add .gitignore for OS files and evolve runtime artifacts
   source: repo had no .gitignore
 
+[2026-04-23 15:03] upgrade: add --focus flag to restrict evolution to a subdirectory
+  source: no way to evolve just src/api/ without scanning the entire project
+
