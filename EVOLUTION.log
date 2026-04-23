@@ -5,3 +5,7 @@
 [2026-04-23 14:48] upgrade: add README.md with install instructions, usage, and changelog
   codemap: N/A (single markdown file)
   source: GitHub repo had no README — users landing on the page had no idea what the plugin does
+
+[2026-04-23 14:50] upgrade: add batch push (every 20 iterations) and GitHub release on completion
+  codemap: N/A (single markdown file)
+  source: user feedback — pushing every iteration spams GitHub, batch at 20 with release summary

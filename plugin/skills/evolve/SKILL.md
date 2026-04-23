@@ -207,6 +207,33 @@ Print one line: `[N/total] <prefix>: <what> — verified on <target>`
 
 Then loop.
 
+## Publishing
+
+Evolve commits locally on every iteration but batches pushes to avoid spamming the remote.
+
+**Push every 20 iterations** — after Step 12, if `iteration_count % 20 == 0`, push to the remote:
+```bash
+git push origin HEAD 2>/dev/null || true   # silent no-op if no remote
+```
+
+**Always push on completion** — when the evolve run ends (count reached, final form, or stopped), push all remaining commits.
+
+**GitHub release on completion** — if `gh` is available and the project has a remote, create a release summarizing all changes:
+```bash
+gh release create "v<version>-evolve-<date>" \
+  --title "Evolution: <N> changes applied" \
+  --notes-file <(cat <<NOTES
+## Changes Applied
+
+$(cat EVOLUTION.log | tail -<lines_from_this_run>)
+
+---
+*Autonomously evolved by /evolve*
+NOTES
+)
+```
+Skip the release if the target has no GitHub remote or fewer than 3 changes were made.
+
 ## End Report
 
 After all iterations (or when done), print:
@@ -224,3 +251,5 @@ Skipped (failed or risky):
 Stopped because: <final form reached / count reached / asked human>
 Evolution log: <target>/EVOLUTION.log
 ```
+
+Then push remaining commits and create the GitHub release.
