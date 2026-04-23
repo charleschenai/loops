@@ -2,5 +2,5 @@
   "name": "loops",
   "description": "Iterative upgrade and fix loops — autonomously improve or harden a project one step at a time.",
   "version": "1.0.0",
-  "keywords": ["loop", "upgrade", "fix", "iterate", "improve", "harden"]
+  "keywords": ["loop", "upgrade", "fix", "clean", "iterate", "improve", "harden", "dead-code"]
 }

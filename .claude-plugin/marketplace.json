@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "loops",
-  "description": "Iterative upgrade and fix loops for autonomous project improvement",
+  "description": "Iterative upgrade, fix, and cleanup loops for autonomous project improvement",
   "owner": {
     "name": "Brandon"
   },
