@@ -1,3 +1,7 @@
 [2026-04-23 14:45] fix: reorder Steps 10-11 so EVOLUTION.log is written before commit
   codemap: N/A (single markdown file)
   source: manual review — Step 10 committed before Step 11 wrote the log, so log entries were never included in the commit they described
+
+[2026-04-23 14:48] upgrade: add README.md with install instructions, usage, and changelog
+  codemap: N/A (single markdown file)
+  source: GitHub repo had no README — users landing on the page had no idea what the plugin does
