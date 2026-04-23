@@ -180,6 +180,8 @@ Use `WebFetch` to pull documentation pages, changelogs, or examples that inform 
 
 **Wiki search (AI/ML projects only):** If the target project involves inference, training, retrieval, agents, or ML infrastructure, also search the local wiki via `hybrid_search` MCP tool for relevant techniques, architectures, and prior decisions. The wiki has recent papers, proven patterns, and architectural decisions that post-date training data. Do NOT use wiki for general-purpose code projects — it covers AI/ML topics only.
 
+**Framework docs (context7):** If the target uses a known framework or library (React, Next.js, Express, Django, Tailwind, Prisma, etc.), use the context7 MCP tools (`resolve-library-id` then `query-docs`) to fetch current documentation before upgrading. This prevents suggesting deprecated APIs or outdated patterns. Especially useful for version migrations and API changes.
+
 ### Step 5: Pick ONE
 Choose the single highest-impact item from the active category. State what you're doing and why in one sentence.
 
