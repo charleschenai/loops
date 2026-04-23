@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "loops",
-      "version": "2.2.0",
+      "version": "2.3.0",
       "source": "./plugin",
       "description": "Evolve any project toward its final form — autonomously fixes, cleans, and upgrades one step at a time."
     }

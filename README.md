@@ -13,7 +13,7 @@ Restart Claude Code after installing.
 ## Usage
 
 ```
-/evolve [count] [target] [--dry-run] [--goals]
+/evolve [count] [target] [--dry-run] [--goals] [--resume] [--focus <subdir>]
 ```
 
 | Argument | Description |
@@ -22,15 +22,19 @@ Restart Claude Code after installing.
 | `target` | Directory to evolve. Defaults to current working directory. |
 | `--dry-run` | Scan and triage only — shows what it would do without making changes. |
 | `--goals` | Pick evolution targets from a menu, then grind toward them autonomously. |
+| `--resume` | Continue a previous run — reads EVOLUTION.log and .evolve-goals. |
+| `--focus` | Restrict scanning and changes to a subdirectory. |
 
 ### Examples
 
 ```
-/evolve 10 ~/Desktop/codemap       # 10 evolution cycles on codemap
-/evolve ~/Desktop/my-project        # evolve until final form
-/evolve 5                           # 5 cycles on current directory
-/evolve --dry-run ~/Desktop/my-app  # preview without touching anything
-/evolve --goals ~/Desktop/my-app    # pick goals, then grind
+/evolve 10 ~/Desktop/codemap         # 10 evolution cycles on codemap
+/evolve ~/Desktop/my-project          # evolve until final form
+/evolve 5                             # 5 cycles on current directory
+/evolve --dry-run ~/Desktop/my-app    # preview without touching anything
+/evolve --goals ~/Desktop/my-app      # pick goals, then grind
+/evolve --resume ~/Desktop/my-app     # pick up where last session left off
+/evolve --focus src/api ~/Desktop/app # only evolve the API subdirectory
 ```
 
 ## How It Works
@@ -49,7 +53,7 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 
 1. **Test** — run the project's test suite or exercise it end-to-end
 2. **Deep Scan** — structural analysis with [codemap](https://github.com/charleschenai/codemap) (if available)
-3. **Triage** — categorize findings by priority
+3. **Triage** — categorize findings by priority (security issues first)
 4. **Research** — web search, wiki (AI/ML), context7 (frameworks), claude-mem (prior sessions)
 5. **Pick ONE** — single highest-impact item
 6. **Safety Check** — stops and asks if change is risky
@@ -70,6 +74,9 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 - **No test suite?** — adapts to build-only, CLI, library, or config/docs projects
 - **Scope guard** — upgrades must align with the project's existing purpose
 - **Parallel scanning** — dispatches subagents for large codebases (>500 files)
+- **Security scanning** — catches hardcoded secrets, injection patterns, unsanitized inputs
+- **Pre-flight checks** — refuses dirty working trees, warns on open PRs
+- **Progress tracking** — visual task tracking via TaskCreate/TaskUpdate
 
 ## Uninstall
 
@@ -83,7 +90,8 @@ All changes applied by `/evolve` on this project are tracked in [EVOLUTION.log](
 
 ### Releases
 
-- **v2.2.0** — Self-evolved again: `--dry-run` mode, `--goals` mode (pick targets then grind), context7 framework docs, claude-mem cross-session learning, parallel agent scanning, scope creep guard.
+- **v2.3.0** — Self-evolved (round 3): `--resume`, `--focus`, pre-flight checks, security scanning, task tracking, DOT graph cleanup (-47 lines).
+- **v2.2.0** — Self-evolved (round 2): `--dry-run`, `--goals`, context7 docs, claude-mem, parallel scanning, scope guard.
 - **v2.1.0** — Self-evolved: fixed step ordering bug, added batch push/GitHub releases, wiki search for AI/ML, test-suite fallback, updated flow diagram, README.
 - **v2.0.0** — Unified `/evolve` skill (replaced separate `/upgradeloop`, `/fixloop`, `/cleanloop`). Added codemap integration, web research, and EVOLUTION.log tracking.
 - **v1.0.0** — Initial release with `/upgradeloop` and `/fixloop` skills.

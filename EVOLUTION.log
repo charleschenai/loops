@@ -83,3 +83,6 @@
 [2026-04-23 15:04] upgrade: integrate TaskCreate/TaskUpdate for visual progress tracking
   source: tools were in allowed-tools but never used — user had no progress visibility
 
+[2026-04-23 15:05] upgrade: update README with all v2.3.0 features — resume, focus, security, pre-flight, tasks
+  source: README stale after 8 more iterations
+

@@ -1,6 +1,6 @@
 {
   "name": "loops",
   "description": "Evolve any project toward its final form — autonomously fixes, cleans, and upgrades one step at a time.",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "keywords": ["evolve", "loop", "upgrade", "fix", "clean", "iterate", "improve", "autonomous"]
 }
