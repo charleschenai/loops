@@ -314,9 +314,15 @@ Append to `EVOLUTION.log` and commit in a single Bash command — no separate Ed
 ```bash
 printf '[%s] %s: %s\n  source: %s\n\n' \
   "$(date '+%Y-%m-%d %H:%M')" "<prefix>" "<description>" "<source>" \
-  >> EVOLUTION.log && git add -A && git commit -m "<prefix>: <description>"
+  >> EVOLUTION.log && git add -A && git commit -m "$(cat <<EOF
+<prefix>: <description>
+
+Source: <what informed this — test output / codemap / web research / wiki>
+Iteration: <N> of <total>
+EOF
+)"
 ```
-Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`. The `source` field records what informed the change (test output, codemap finding, web research, wiki, etc.).
+Use the prefix from the priority table: `fix:`, `clean:`, or `upgrade:`. The commit body includes the source and iteration number so `git log` is self-documenting even without EVOLUTION.log.
 
 ### Step 11: Report
 Print one line: `[N/total] <prefix>: <what> — verified on <target>`
