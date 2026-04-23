@@ -23,17 +23,19 @@ Autonomously evolve a project toward its final form. Each cycle: test → triage
 ## Usage
 
 ```
-/evolve [count] [target]
+/evolve [count] [target] [--dry-run]
 ```
 
 - `count` — number of iterations. Omit or `0` for infinite (runs until nothing left or asks human).
 - `target` — directory to evolve. Defaults to cwd.
+- `--dry-run` — scan and triage only. Reports what it would do without making any changes. Runs Steps 1-5 of each iteration, then prints the plan and stops.
 
 Examples:
 ```
 /evolve 10 ~/Desktop/codemap          # 10 evolution cycles on codemap
 /evolve ~/Desktop/charlie-code/src    # evolve until final form
 /evolve 5                              # 5 cycles on current directory
+/evolve --dry-run ~/Desktop/my-app    # show what needs fixing without touching anything
 ```
 
 ## The Loop
@@ -182,7 +184,15 @@ Use `WebFetch` to pull documentation pages, changelogs, or examples that inform 
 Choose the single highest-impact item from the active category. State what you're doing and why in one sentence.
 
 ### Step 6: Check Safety
-Ask: "Could this break something the user depends on?" If yes → STOP and ask. If no → proceed.
+**If `--dry-run`:** Print the triage results and picked item, then stop. Do not implement, commit, or modify anything. Format:
+```
+[dry-run] Would <prefix>: <description>
+  category: <fix|clean|upgrade>
+  source: <what surfaced this>
+```
+Then skip to the next iteration (or end if count reached).
+
+**Otherwise:** Ask: "Could this break something the user depends on?" If yes → STOP and ask. If no → proceed.
 
 ### Step 7: Implement
 Build the fix, removal, or upgrade. Keep it focused — one change, minimal blast radius.
