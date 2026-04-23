@@ -46,7 +46,7 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 1. **Test** — run the project's test suite or exercise it end-to-end
 2. **Deep Scan** — structural analysis with [codemap](https://github.com/charleschenai/codemap) (if available)
 3. **Triage** — categorize findings by priority
-4. **Research** — web search for best practices (upgrade mode)
+4. **Research** — web search + wiki search (AI/ML projects) for best practices
 5. **Pick ONE** — single highest-impact item
 6. **Safety Check** — stops and asks if change is risky
 7. **Implement** — focused, minimal change
@@ -60,7 +60,10 @@ Fix first — a project with bugs shouldn't get new features. Clean second — a
 - **Containment** — only modifies files inside the target directory
 - **One change per cycle** — small, verifiable, reversible
 - **Stops on risk** — asks the human before risky changes
-- **Max 2 retries** — skips changes that fail twice
+- **Max 2 retries** — skips changes that fail twice, reverts cleanly with `git checkout`
+- **Batch push** — pushes every 20 iterations, not every commit
+- **GitHub release** — creates a release on completion (if `gh` available and 3+ changes)
+- **No test suite?** — adapts to build-only, CLI, library, or config/docs projects
 
 ## Uninstall
 
@@ -74,5 +77,6 @@ All changes applied by `/evolve` on this project are tracked in [EVOLUTION.log](
 
 ### Releases
 
+- **v2.1.0** — Self-evolved: fixed step ordering bug, added batch push/GitHub releases, wiki search for AI/ML, test-suite fallback, updated flow diagram, this README.
 - **v2.0.0** — Unified `/evolve` skill (replaced separate `/upgradeloop`, `/fixloop`, `/cleanloop`). Added codemap integration, web research, and EVOLUTION.log tracking.
 - **v1.0.0** — Initial release with `/upgradeloop` and `/fixloop` skills.
