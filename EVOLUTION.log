@@ -35,3 +35,6 @@
 [2026-04-23 14:54] fix: update flow diagram and README to reflect merged log+commit step (11 steps)
   source: diagram still showed 12 steps after log+commit merge
 
+[2026-04-23 14:55] fix: stale Step 12 reference in Publishing section → Step 11
+  source: renumbered to 11 steps but missed reference in Publishing
+

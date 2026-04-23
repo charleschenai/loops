@@ -217,7 +217,7 @@ Then loop.
 
 Evolve commits locally on every iteration but batches pushes to avoid spamming the remote.
 
-**Push every 20 iterations** — after Step 12, if `iteration_count % 20 == 0`, push to the remote:
+**Push every 20 iterations** — after Step 11, if `iteration_count % 20 == 0`, push to the remote:
 ```bash
 git push origin HEAD 2>/dev/null || true   # silent no-op if no remote
 ```
