@@ -206,6 +206,24 @@ When `--resume` is passed:
 
 If no `EVOLUTION.log` exists, `--resume` behaves identically to a fresh run.
 
+## Pre-Flight Checks
+
+Before the first iteration, verify the target is safe to evolve:
+
+```bash
+cd <target>
+git status --porcelain   # must be clean — no uncommitted changes
+git log -1 --oneline     # must be a git repo with at least one commit
+```
+
+**Refuse to start if:**
+- The working tree has uncommitted changes — evolve commits on every iteration and would mix its changes with the user's unfinished work. Tell the user to commit or stash first.
+- The directory is not a git repo — evolve needs git for commits, reverts, and push.
+
+**Warn but proceed if:**
+- The branch has an open PR — changes will be added to the PR. Mention this.
+- The branch is behind the remote — suggest `git pull` first.
+
 ## Each Iteration
 
 ### Step 1: Test

@@ -65,3 +65,6 @@
 [2026-04-23 15:01] upgrade: persist goals to .evolve-goals file for cross-session continuity
   source: goals only lived in memory — session crash lost all selected targets
 
+[2026-04-23 15:01] upgrade: add pre-flight checks — refuse dirty trees, warn on open PRs
+  source: evolve could mix its commits with user's uncommitted work or push to a PR branch unexpectedly
+
