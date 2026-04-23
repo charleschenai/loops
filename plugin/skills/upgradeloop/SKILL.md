@@ -12,6 +12,8 @@ allowed-tools:
   - Agent
   - TaskCreate
   - TaskUpdate
+  - WebSearch
+  - WebFetch
 ---
 
 # /upgradeloop — Iterative Upgrade Loop
@@ -84,6 +86,15 @@ Run the project's test suite, or exercise it end-to-end on a real target. Captur
 
 ### Step 2: Evaluate
 Look at the output. What can't it do that it should? What information is missing? What would make the output more useful? Rank the gaps by impact.
+
+### Step 2.5: Research (optional but encouraged)
+Before picking an upgrade, use `WebSearch` to find what similar tools/projects do that this one doesn't. Look for:
+- Best practices the project doesn't follow yet
+- Features common in similar projects that are missing here
+- New patterns, libraries, or techniques that could improve quality
+- Known issues or pitfalls in the project's domain
+
+This turns blind improvement into informed improvement. Skip if the project is highly specialized or the gaps are already obvious.
 
 ### Step 3: Pick ONE
 Choose the single highest-impact missing capability. State what you're building and why in one sentence.
